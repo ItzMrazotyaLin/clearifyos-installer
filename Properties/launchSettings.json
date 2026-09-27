@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ClearifyOS-Installer (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ClearifyOS-Installer (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

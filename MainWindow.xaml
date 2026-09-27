@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="ClearifyOS_Installer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ClearifyOS_Installer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ClearifyOS Installer"
+    mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <DesktopAcrylicBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid
+        x:Name="RootGrid"
+        Background="Transparent"
+        Loaded="RootGrid_Loaded"
+        Opacity="0"
+        RequestedTheme="Dark">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            x:Name="CustomTitleBar"
+            Grid.Row="0"
+            Padding="16,0,0,0"
+            VerticalAlignment="Stretch"
+            Background="Transparent">
+            <StackPanel
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="8">
+                <FontIcon
+                    FontSize="14"
+                    Glyph="&#xE713;"
+                    Opacity="0.7" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    Opacity="0.7"
+                    Text="ClearifyOS Installer" />
+            </StackPanel>
+        </Grid>
+
+        <StackPanel
+            x:Name="WelcomePanel"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Opacity="0"
+            Spacing="8">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="WelcomeTranslate" Y="24" />
+            </StackPanel.RenderTransform>
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontFamily="Segoe UI Variable Display"
+                FontSize="38"
+                FontWeight="SemiBold"
+                Text="ClearifyOS" />
+            <Grid
+                MaxWidth="640"
+                Margin="32,0,32,0">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    Text="Добро пожаловать в установщик ClearifyOS! Это специально разработанный установщик, чтобы вы с лёгкостью могли установить сборку Windows без флешки, и начисто"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Padding="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                Orientation="Horizontal"
+                Spacing="12">
+                <Button
+                    MinWidth="120"
+                    Command="{x:Bind ViewModel.CancelCommand}"
+                    Content="Отмена" />
+                <Button
+                    MinWidth="120"
+                    Command="{x:Bind ViewModel.NextCommand}"
+                    Content="Далее"
+                    Style="{StaticResource AccentButtonStyle}" />
+            </StackPanel>
+
+            <Button
+                Grid.Column="2"
+                MinWidth="120"
+                Click="AboutButton_Click"
+                Content="О программе"
+                Style="{StaticResource DefaultButtonStyle}" />
+        </Grid>
+    </Grid>
+</Window>
