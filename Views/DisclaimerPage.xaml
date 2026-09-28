@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="ClearifyOS_Installer.Views.DisclaimerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid
+        MaxWidth="640"
+        Margin="32,0,32,0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <StackPanel
+            x:Name="DisclaimerPanel"
+            HorizontalAlignment="Center"
+            Loaded="DisclaimerPanel_Loaded"
+            Opacity="0"
+            Spacing="0">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="DisclaimerTranslate" Y="24" />
+            </StackPanel.RenderTransform>
+
+            <TextBlock
+                Margin="0,0,0,16"
+                HorizontalAlignment="Center"
+                FontSize="32"
+                FontWeight="SemiBold"
+                Text="Дисклеймер!"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="14"
+                LineHeight="22"
+                Text="Данная модификация Windows является неофициальной сборкой. Программное обеспечение предоставляется «как есть», без каких-либо явных или подразумеваемых гарантий. Автор сборки не несёт ответственности за возможную потерю данных, сбои в работе оборудования или иные последствия. Установка и использование производятся исключительно на ваш страх и риск."
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <TextBlock
+                Margin="0,16,0,0"
+                HorizontalAlignment="Center"
+                FontSize="12"
+                Opacity="0.6"
+                Text="Windows является зарегистрированным товарным знаком корпорации Microsoft. Разработчик сборки не претендует на права интеллектуальной собственности Microsoft."
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+
+            <CheckBox
+                x:Name="AgreementCheckBox"
+                Margin="0,24,0,0"
+                HorizontalAlignment="Center"
+                Content="Я принимаю условия отказа от ответственности и понимаю возможные риски" />
+        </StackPanel>
+    </Grid>
+</Page>

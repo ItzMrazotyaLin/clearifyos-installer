@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="ClearifyOS_Installer.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <StackPanel
+        x:Name="WelcomePanel"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Loaded="WelcomePanel_Loaded"
+        Opacity="0"
+        Spacing="8">
+        <StackPanel.RenderTransform>
+            <TranslateTransform x:Name="WelcomeTranslate" Y="24" />
+        </StackPanel.RenderTransform>
+
+        <TextBlock
+            HorizontalAlignment="Center"
+            FontFamily="Segoe UI Variable Display"
+            FontSize="38"
+            FontWeight="SemiBold"
+            Text="ClearifyOS" />
+        <Grid
+            MaxWidth="640"
+            Margin="32,0,32,0">
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontSize="16"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                Text="Добро пожаловать в установщик ClearifyOS! Это специально разработанный установщик, чтобы вы с лёгкостью могли установить сборку Windows без флешки, и начисто"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+        </Grid>
+    </StackPanel>
+</Page>

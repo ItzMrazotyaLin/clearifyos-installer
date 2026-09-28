@@ -35,10 +35,6 @@
                 VerticalAlignment="Center"
                 Orientation="Horizontal"
                 Spacing="8">
-                <FontIcon
-                    FontSize="14"
-                    Glyph="&#xE713;"
-                    Opacity="0.7" />
                 <TextBlock
                     VerticalAlignment="Center"
                     FontSize="12"
@@ -47,63 +43,68 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel
-            x:Name="WelcomePanel"
+        <Frame
+            x:Name="ContentFrame"
             Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Opacity="0"
-            Spacing="8">
-            <StackPanel.RenderTransform>
-                <TranslateTransform x:Name="WelcomeTranslate" Y="24" />
-            </StackPanel.RenderTransform>
-            <TextBlock
-                HorizontalAlignment="Center"
-                FontFamily="Segoe UI Variable Display"
-                FontSize="38"
-                FontWeight="SemiBold"
-                Text="ClearifyOS" />
-            <Grid
-                MaxWidth="640"
-                Margin="32,0,32,0">
-                <TextBlock
-                    HorizontalAlignment="Center"
-                    FontSize="16"
-                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                    Text="Добро пожаловать в установщик ClearifyOS! Это специально разработанный установщик, чтобы вы с лёгкостью могли установить сборку Windows без флешки, и начисто"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap" />
-            </Grid>
-        </StackPanel>
+            Background="Transparent"
+            IsNavigationStackEnabled="False" />
 
         <Grid Grid.Row="2" Padding="24">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel
+            <Button
                 Grid.Column="0"
+                MinWidth="120"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="AboutButton_Click"
+                Content="О программе"
+                Style="{StaticResource DefaultButtonStyle}"
+                Visibility="{x:Bind ViewModel.AboutVisibility, Mode=OneWay}" />
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+                <PipsPager
+                    x:Name="StepPips"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="Шаги установки"
+                    NextButtonVisibility="Collapsed"
+                    NumberOfPages="2"
+                    PreviousButtonVisibility="Collapsed"
+                    SelectedIndexChanged="StepPips_SelectedIndexChanged"
+                    SelectedPageIndex="{x:Bind ViewModel.StepIndex, Mode=OneWay}" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="12"
+                    Opacity="0.6"
+                    Text="{x:Bind ViewModel.StepText, Mode=OneWay}" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
                 Orientation="Horizontal"
                 Spacing="12">
                 <Button
                     MinWidth="120"
-                    Command="{x:Bind ViewModel.CancelCommand}"
-                    Content="Отмена" />
+                    Command="{x:Bind ViewModel.SecondaryActionCommand}"
+                    Content="{x:Bind ViewModel.SecondaryButtonText, Mode=OneWay}" />
                 <Button
                     MinWidth="120"
                     Command="{x:Bind ViewModel.NextCommand}"
                     Content="Далее"
+                    IsEnabled="{x:Bind ViewModel.IsNextEnabled, Mode=OneWay}"
                     Style="{StaticResource AccentButtonStyle}" />
             </StackPanel>
-
-            <Button
-                Grid.Column="2"
-                MinWidth="120"
-                Click="AboutButton_Click"
-                Content="О программе"
-                Style="{StaticResource DefaultButtonStyle}" />
         </Grid>
     </Grid>
 </Window>
